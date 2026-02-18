@@ -2,6 +2,7 @@ import json
 import matplotlib.pyplot as plt
 from datetime import datetime
 import matplotlib.dates as mdates
+from matplotlib.ticker import MaxNLocator
 
 with open("covid.json", "r") as file:
     data = json.load(file)
@@ -29,6 +30,7 @@ plt.title("Daily COVID Cases and Deaths")
 
 plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=5))
 plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
+plt.gca().yaxis.set_major_locator(MaxNLocator(10))
 
 plt.xticks(rotation=45)
 plt.legend(["Daily Cases", "Daily Deaths"])
